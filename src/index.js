@@ -34,6 +34,16 @@ const TRAP_PATHS = {
   '/administrator': 'adminpanel',
   '/phpmyadmin': 'adminpanel',
   '/api/v1/login': 'apilogin',
+  '/.aws/credentials': 'envfile',
+  '/config.php': 'envfile',
+  '/.git/HEAD': 'gitconfig',
+  '/wp-config.php': 'envfile',
+  '/login': 'adminpanel',
+  '/api/login': 'apilogin',
+  '/.ssh/id_rsa': 'envfile',
+  '/backup.sql': 'envfile',
+  '/server-status': 'adminpanel',
+  '/.vscode/sftp.json': 'envfile',
 };
 
 const DASHBOARD_PATH = '/dashboard';

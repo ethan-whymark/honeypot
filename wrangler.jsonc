@@ -4,7 +4,7 @@
  */
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "honeypot",
+	"name": "api-gateway-prod",
 	"main": "src/index.js",
 	"compatibility_date": "2026-05-14",
 	"observability": {
