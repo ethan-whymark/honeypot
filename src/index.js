@@ -23,9 +23,11 @@
 // Configuration
 // ---------------------------------------------------------------------------
 
+
 // Trap paths the honeypot "listens" on, each mapped to a fake-response type.
 // Add more here as your logs show you what's actually being probed.
 const TRAP_PATHS = {
+  // Basic web app patterns — these are the most common scanner targets, and the ones most likely to yield interesting metadata in the request body (username/password pairs).
   '/wp-login.php': 'wordpress',
   '/wp-admin': 'wordpress',
   '/.env': 'envfile',
@@ -34,7 +36,6 @@ const TRAP_PATHS = {
   '/administrator': 'adminpanel',
   '/phpmyadmin': 'adminpanel',
   '/api/v1/login': 'apilogin',
-  '/.aws/credentials': 'envfile',
   '/config.php': 'envfile',
   '/.git/HEAD': 'gitconfig',
   '/wp-config.php': 'envfile',
@@ -44,6 +45,32 @@ const TRAP_PATHS = {
   '/backup.sql': 'envfile',
   '/server-status': 'adminpanel',
   '/.vscode/sftp.json': 'envfile',
+
+  // Spring Boot Actuator (very actively probed right now)
+  '/actuator/health': 'apilogin',
+  '/actuator/env': 'envfile',
+  '/actuator/heapdump': 'envfile',
+
+  // API patterns
+  '/api/v2/login': 'apilogin',
+  '/api/health': 'apilogin',
+  '/api/.env': 'envfile',
+
+  // Cloud / container credentials
+  '/.aws/credentials': 'envfile',
+  '/.docker/config.json': 'envfile',
+
+  // Common admin panels
+
+  '/manager/html': 'adminpanel',
+
+  // Router / IoT (botnet favourites)
+  '/HNAP1/': 'adminpanel',
+  '/cgi-bin/luci': 'adminpanel',
+
+  // CVE-driven scans (very common scanner targets)
+  '/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php': 'apilogin',
+  '/_ignition/execute-solution': 'apilogin',
 };
 
 const DASHBOARD_PATH = '/dashboard';
